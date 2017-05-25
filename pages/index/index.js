@@ -1,3 +1,9 @@
+const Upyun = require('../../upyun/upyun-wxapp-sdk')
+const upyun = new Upyun({
+  bucket: 'dd-doudouapp-com',
+  operator: 'doudouapp1234',
+  getSignatureUrl: 'http://dd.doudouapp.com:8080'
+})
 //index.js
 //获取应用实例
 var app = getApp()
@@ -12,6 +18,7 @@ Page({
   },
 
   DuiFunction: function() {
+    var that = this 
     wx.chooseVideo({
       sourceType: ['album', 'camera'],
       maxDuration: 60,
@@ -20,14 +27,42 @@ Page({
         that.setData({
           src: res.tempFilePath
         })
+        const imageSrc = res.tempFilePath
+        
+        upyun.upload({
+          localPath: imageSrc,
+          remotePath: '/wxapp/demo',
+          success: function (res) {
+            console.log('uploadImage success, res is:', res)
+
+            wx.showToast({
+              title: '上传成功',
+              icon: 'success',
+              duration: 1000
+            })
+
+            self.setData({
+              imageSrc
+            })
+          },
+          fail: function ({errMsg}) {
+            console.log('uploadImage fail, errMsg is', errMsg)
+          }
+        })
+        
+      },
+      fail: function ({errMsg}) {
+        console.log('chooseImage fail, err is', errMsg)
       }
     })
+
+    
   },
   
   LeftFollow: function(test) {
     console.log(test.target.id)
     var that = this
-    
+   // that.DuiFunction()
     that.Follow(test.target.id, 'left', that.data.token)
     wx.navigateTo({
       url: '../index/index?side=left&id=' + test.target.id
@@ -49,7 +84,7 @@ Page({
       data: {
         appid: 'app123',
         appsecret: '333',
-        email: 'songwenbin@outlook.com',
+        user_email: "songwenbin@outlook.com",
         user_token: token
       },
       header: {
@@ -57,6 +92,25 @@ Page({
       },
       success: function (res) {
         console.log(res.data)
+        if (res.data.status == 400) {
+          wx.showToast({
+            icon: "success",
+            title: "已投票",
+            duration: 2000
+          })
+        } else if (res.data.status == 204) {
+          wx.showToast({
+            icon: "success",
+            title: "已投票",
+            duration: 2000
+          })
+        } else if (res.data.status == 200) {
+          wx.showToast({
+            icon: "success",
+            title: "投票成功",
+            duration: 2000
+          })
+        }
       }
     }
     )
@@ -71,7 +125,7 @@ Page({
       data: {
         appid: 'app123',
         appsecret: '333',
-        email: 'songwenbin@outlook.com',
+        user_email: 'songwenbin@outlook.com',
         user_token: that.data.token
       },
       header: {
