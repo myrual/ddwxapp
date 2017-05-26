@@ -18,7 +18,9 @@ Upyun.prototype.upload = function (options) {
   }
   var policy = Base64.encode(JSON.stringify(opts))
   var data = [ 'POST', '/' + self.bucket, date, policy ].join('&')
+  console.log(data)
   self.getSignature(data, function (err, signature) {
+    console.log(signature)
     if (err) {
       options.fail && options.fail(err)
       options.complete && options.complete(err)
@@ -46,7 +48,9 @@ Upyun.prototype.getSignature = function (data, cb) {
       data: data
     },
     success: function (res) {
-      cb(null, res.data.signature)
+      console.log(res.data)
+      //cb(null, res.data.signature)
+      cb(null, res.data.result.substring(0, res.data.result.length-1))
     },
     fail: function (err) {
       cb(err)

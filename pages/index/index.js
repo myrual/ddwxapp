@@ -1,8 +1,8 @@
 const Upyun = require('../../upyun/upyun-wxapp-sdk')
 const upyun = new Upyun({
   bucket: 'dd-doudouapp-com',
-  operator: 'doudouapp1234',
-  getSignatureUrl: 'http://dd.doudouapp.com:8080'
+  operator: 'doudouapp',
+  getSignatureUrl: 'https://dd.doudouapp.com/api/v1/upyunauths.json'
 })
 //index.js
 //获取应用实例
@@ -41,7 +41,7 @@ Page({
               duration: 1000
             })
 
-            self.setData({
+            that.setData({
               imageSrc
             })
           },
