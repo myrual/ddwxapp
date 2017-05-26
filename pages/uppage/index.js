@@ -29,7 +29,7 @@ Page({
         const imageSrc = res.tempFilePaths[0]
         upyun.upload({
           localPath: imageSrc,
-          remotePath: '/wxapp/demo',
+          remotePath: '/wxapp/so',
           success: function (res) {
             console.log('uploadImage success, res is:', res)
 

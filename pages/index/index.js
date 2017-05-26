@@ -15,6 +15,77 @@ Page({
     src : null,
     side : null,
     targetid : null,
+    userid: null,
+    videoid: null,
+  },
+
+  UpdateVideo: function() {
+
+    var that = this;
+    wx.request({
+      url: 'https://dd.doudouapp.com/api/v1/videos/' + that.data.videoid + '/new_ext_video.json',
+      method: 'POST',
+      data: {
+        appid: 'app123',
+        appsecret: '333',
+        video_title: 'test',
+        user_id: that.data.userid,
+        user_token: that.data.token,
+        provider: 'upyun',
+        videourl: 'http://dd-doudouapp-com.b0.upaiyun.com/uploads/testvideo/'+ that.data.videoid, 
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data.id)
+        console.log("Upload video to doudou")
+      }
+    })
+  },
+
+  GeneVideoId: function() {
+    var that = this;
+    wx.request({
+      url: 'https://dd.doudouapp.com/api/v1/videos.json',
+      method: 'POST',
+      data: {
+        appid: 'app123',
+        appsecret: '333',
+        video_title: 'test123',
+        user_id: that.data.userid,
+        user_token: that.data.token
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log("video id :" + res.data.id)
+        that.setData({
+          videoid: res.data.id
+        })
+
+        console.log(that.data.src)
+        console.log(that.data.videoid)
+        upyun.upload({
+          localPath: that.data.src,
+          remotePath: '/uploads/testvideo/' + that.data.videoid,
+          success: function (res) {
+            console.log('uploadVideo success, res is:', res)
+            wx.showToast({
+              title: '上传成功',
+              icon: 'success',
+              duration: 1000
+            })
+            that.UpdateVideo()
+          },
+          fail: function ({errMsg}) {
+            console.log('uploadVideo fail, errMsg is', errMsg)
+          }
+        })
+      }
+    })
+
   },
 
   DuiFunction: function() {
@@ -28,35 +99,13 @@ Page({
           src: res.tempFilePath
         })
         const imageSrc = res.tempFilePath
-        
-        upyun.upload({
-          localPath: imageSrc,
-          remotePath: '/wxapp/demo',
-          success: function (res) {
-            console.log('uploadImage success, res is:', res)
-
-            wx.showToast({
-              title: '上传成功',
-              icon: 'success',
-              duration: 1000
-            })
-
-            that.setData({
-              imageSrc
-            })
-          },
-          fail: function ({errMsg}) {
-            console.log('uploadImage fail, errMsg is', errMsg)
-          }
-        })
-        
+        console.log(imageSrc)
+        that.GeneVideoId()
       },
       fail: function ({errMsg}) {
         console.log('chooseImage fail, err is', errMsg)
       }
     })
-
-    
   },
   
   LeftFollow: function(test) {
@@ -158,7 +207,8 @@ Page({
         success: function(res) {
           console.log(res.data)
           that.setData ({
-            token: res.data.authentication_token
+            token: res.data.authentication_token,
+            userid: res.data.id
           })
           that.Battles()
         }
