@@ -1,6 +1,4 @@
-<!--index.wxml-->
 
-<view class="container">
     <text>{{battle.title}}</text> 
     <view class="flex-wrp" style="flex-direction:row;">
       <video id="leftvideo" src="{{battle.left_video_url}}"></video>
@@ -11,5 +9,5 @@
     
   <view><progress id="aaa" percent="60" activeColor="blue" backgroundColor="red" stroke-width="20" /></view>
 
-</view>
+
 

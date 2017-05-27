@@ -19,11 +19,18 @@
 .usermotto {
   margin-top: 200px;
 }
+.unit {
+  margin-top: 50px;
+}
 
 #leftvideo {
   width: 180px;
 }
 #rightvideo {
   width: 180px;
+}
+
+.title {
+  align-items:center;
 }
 
