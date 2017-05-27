@@ -27,3 +27,8 @@
   width: 180px;
 }
 
+.votebar{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}

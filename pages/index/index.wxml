@@ -9,9 +9,10 @@
       <video id="leftvideo" src="{{item.left_video_url}}"></video>
       <video id="rightvideo" src="{{item.right_video_url}}"></video>
     </view>
-    <view class="flex-wrp" style="flex-direction:row;">
-        <button id="{{item.id}}" size="mini" type="default" bindtap="LeftFollow">投票左边</button>
-        <button id="{{item.id}}" size="mini" type="default" bindtap="RightFollow">投票右边</button>
+    <view class="votebar">
+        <button  id="{{item.id}}" size="mini" type="default" bindtap="LeftFollow" class="votebuttonleft">投票左边</button>
+        <span></span>
+        <button id="{{item.id}}" size="mini" type="default" bindtap="RightFollow" class="votebuttonright">投票右边</button>
      </view>
      <view wx:if="{{item.id == targetid && side == 'left'}}"> <button  id="{{duirightid}}" type="default" bindtap="DuiFunction">挑战右边</button> </view>
      <view wx:if="{{item.id == targetid && side == 'right'}}"> <button id="{{duileftid}}" type="default" bindtap="DuiFunction">挑战左边</button> </view>
