@@ -93,7 +93,7 @@ Page({
           duirightid: res.data.right_video_id,
         })
         wx.navigateTo({
-          url: '../challenge/challenge?side=left&id=' + res.data.id + '&side=' + that.data.side + '&duileftid=' + that.data.duileftid + '&duirightid=' + that.data.duirightid
+          url: '../challenge/challenge?side=left&id=' + res.data.id + '&side=' + that.data.side + '&duileftid=' + that.data.duileftid + '&duirightid=' + that.data.duirightid + '&userid=' + that.data.userid +'&token='+that.data.token
         })
       })
   },

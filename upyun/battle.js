@@ -16,7 +16,7 @@ Battle.prototype.ChallengeVideo = function(id, duiid) {
     data: {
       appid: 'app123',
       appsecret: '333',
-      battle_title: 'testbattle123',
+      battle_title: that.title,
       user_id: that.user_id,
       user_token: that.user_token,
       battle_description: 'null',
