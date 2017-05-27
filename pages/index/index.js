@@ -11,6 +11,10 @@ Page({
   data: {
     token: null,
     battles: [],
+    battle: null,
+    duileftid: 0,
+    duirightid: 0,
+    duiid: 0,
     userInfo: {},
     src : null,
     side : null,
@@ -19,8 +23,30 @@ Page({
     videoid: null,
   },
 
+  ChallengeVideo: function(id, duiid) {
+    var that = this;
+    wx.request({
+      url: 'https://dd.doudouapp.com/api/v1/battles.json',
+      method: 'POST',
+      data: {
+        appid: 'app123',
+        appsecret: '333',
+        battle_title: 'testbattle',
+        user_id: that.data.userid,
+        user_token: that.data.token,
+        battle_description: 'null',
+        battle_left_video_id: id,
+        battle_right_video_id: duiid,
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log("Create battle successful")
+      }
+    })
+  },
   UpdateVideo: function() {
-
     var that = this;
     wx.request({
       url: 'https://dd.doudouapp.com/api/v1/videos/' + that.data.videoid + '/new_ext_video.json',
@@ -40,6 +66,7 @@ Page({
       success: function (res) {
         console.log(res.data.id)
         console.log("Upload video to doudou")
+        that.ChallengeVideo(that.data.videoid, that.data.duiid)
       }
     })
   },
@@ -88,7 +115,7 @@ Page({
 
   },
 
-  DuiFunction: function() {
+  DuiFunction: function(test) {
     var that = this 
     wx.chooseVideo({
       sourceType: ['album', 'camera'],
@@ -96,7 +123,8 @@ Page({
       camera: 'back',
       success: function (res) {
         that.setData({
-          src: res.tempFilePath
+          src: res.tempFilePath,
+          duiid: test.target.id,
         })
         const imageSrc = res.tempFilePath
         console.log(imageSrc)
@@ -109,20 +137,20 @@ Page({
   },
   
   LeftFollow: function(test) {
-    console.log(test.target.id)
     var that = this
-   // that.DuiFunction()
-    that.Follow(test.target.id, 'left', that.data.token)
-    wx.navigateTo({
-      url: '../index/index?side=left&id=' + test.target.id
+    that.setData({
+      side: 'left'
     })
+    that.Follow(test.target.id, 'left', that.data.token)
+    that.GetBattlesById(test.target.id)    
   },
   RightFollow: function(test) {
     var that = this
-    that.Follow(test.target.id, 'right', that.data.token)
-    wx.navigateTo({
-      url: '../index/index?side=right&id=' + test.target.id
+    that.setData({
+      side: 'right'
     })
+    that.Follow(test.target.id, 'right', that.data.token)
+    that.GetBattlesById(test.target.id)
   },
   Follow: function (id, side, token) {
     var that = this
@@ -165,72 +193,81 @@ Page({
     )
   },
 
-  Battles: function () {
+  GetBattlesById: function (id) {
     var that = this
     console.log(that.data.token);
-    wx.request({
-      url: 'https://dd.doudouapp.com/api/v1/battles.json',
-      method: 'GET',
-      data: {
+    app.request()
+      .get('https://dd.doudouapp.com/api/v1/battles/'+id+'.json')
+      .query({
         appid: 'app123',
         appsecret: '333',
         user_email: 'songwenbin@outlook.com',
         user_token: that.data.token
-      },
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
+      })
+      .end()
+      .then(function (res) {
+        console.log(res.data)
+        that.setData({
+          battle: res.data,
+          duileftid: res.data.left_video_id,
+          duirightid: res.data.right_video_id,
+        })
+        wx.navigateTo({
+          url: '../index/index?side=left&id=' + res.data.id + '&side=' + that.data.side + '&duileftid=' + that.data.duileftid + '&duirightid=' + that.data.duirightid
+        })
+      })
+  },
+  GetBattles: function () {
+    var that = this
+    console.log(that.data.token);
+    app.request()
+      .get('https://dd.doudouapp.com/api/v1/battles.json')
+      .query({
+        appid: 'app123',
+        appsecret: '333',
+        user_email: 'songwenbin@outlook.com',
+        user_token: that.data.token
+      })
+      .end()
+      .then(function (res) {
         console.log(res.data[0])
         that.setData({
           battles: res.data
         })
-      }
-    }
-    )
-  },
-
-  UserLogin: function() {
-    var that = this
-    wx.request({
-        url : 'https://dd.doudouapp.com/users/sign_in.json',
-        method : 'POST',
-        data : {
-          appid : 'app123',
-          appsecret : '333',
-          email: 'songwenbin@outlook.com',
-          password: 'songwenbin'
-        },
-        header: {
-          'Content-Type': 'application/json'  
-        },
-        success: function(res) {
-          console.log(res.data)
-          that.setData ({
-            token: res.data.authentication_token,
-            userid: res.data.id
-          })
-          that.Battles()
-        }
-      }
-    )
+      })
   },
   onLoad: function () {
     console.log('onLoad')
     var that = this
-    console.log(that.options.side)
-    console.log(that.options.id)
     this.setData({
       side: that.options.side,
       targetid: that.options.id,
+      duileftid: that.options.duileftid,
+      duirightid: that.options.duirightid,
     })
-    //调用应用实例的方法获取全局数据
+
     app.getUserInfo(function(userInfo){
-      //更新数据
       that.setData({
         userInfo:userInfo
       })
     })
-    that.UserLogin()
+
+    app.request()
+      .post('https://dd.doudouapp.com/users/sign_in.json')
+      .query({
+        appid: 'app123',
+        appsecret: '333',
+        email: 'songwenbin@outlook.com',
+        password: 'songwenbin'
+      })
+      .end()
+      .then(function (res) {
+        console.log(res.data)
+        that.setData({
+          token: res.data.authentication_token,
+          userid: res.data.id
+        })
+        that.GetBattles()
+      });
   }
 })

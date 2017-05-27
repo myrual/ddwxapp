@@ -1,26 +1,6 @@
 <!--index.wxml-->
 
 <view class="container">
-  <!--
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-  
-  </view>
-  -->
-  
-  <!--
-  <view class="leftimage">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-  </view>
-  <view class="rightimage">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-   </view> 
-   -->
   
   <view wx:for="{{battles}}">
     <text>{{item.title}}</text>
@@ -30,24 +10,14 @@
       <video id="rightvideo" src="{{item.right_video_url}}"></video>
     </view>
     <view class="flex-wrp" style="flex-direction:row;">
-      <!--<view class="followleft">-->
         <button id="{{item.id}}" size="mini" type="default" bindtap="LeftFollow">投票左边</button>
-     <!-- </view>-->
-      <!--<view class="followRight">-->
         <button id="{{item.id}}" size="mini" type="default" bindtap="RightFollow">投票右边</button>
-      <!--</view>-->
      </view>
-     <view wx:if="{{item.id == targetid}}"> <button type="default" bindtap="DuiFunction">怼</button> </view>
+     <view wx:if="{{item.id == targetid && side == 'left'}}"> <button  id="{{duirightid}}" type="default" bindtap="DuiFunction">挑战右边</button> </view>
+     <view wx:if="{{item.id == targetid && side == 'right'}}"> <button id="{{duileftid}}" type="default" bindtap="DuiFunction">挑战左边</button> </view>
     
   <view><progress id="aaa" percent="60" activeColor="blue" backgroundColor="red" stroke-width="20" /></view>
-  
-  <!--
-  <view class="flex-wrp" style="flex-direction:row;">
-      <image class="leftbutton" src="{{userInfo.avatarUrl}}" background-size="cover"></image>  
-      <view><progress id="test" percent="60" activeColor="blue" backgroundColor="red" stroke-width="20" /></view>
-      <image class="rightbutton" src="{{userInfo.avatarUrl}}" background-size="cover"></image>   
-   </view>
-   -->
+
    </view>
    
 </view>
