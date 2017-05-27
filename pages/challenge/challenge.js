@@ -1,4 +1,8 @@
 
+const Battle = require('../../upyun/battle')
+const battle = new Battle()
+//index.js
+//获取应用实例
 var app = getApp()
 Page({
   data: {
@@ -16,61 +20,24 @@ Page({
     videoid: null,
   },
 
-  LeftFollow: function(test) {
-    var that = this
-    that.setData({
-      side: 'left'
-    })
-    that.Follow(test.target.id, 'left', that.data.token)
-    that.GetBattlesById(test.target.id)    
-  },
-  RightFollow: function(test) {
-    var that = this
-    that.setData({
-      side: 'right'
-    })
-    that.Follow(test.target.id, 'right', that.data.token)
-    that.GetBattlesById(test.target.id)
-  },
-  Follow: function (id, side, token) {
-    var that = this
-    console.log(token);
-    wx.request({
-      url: 'https://dd.doudouapp.com/api/v1/battles/' + id + '/follow_' + side + '_video.json',
-      method: 'POST',
-      data: {
-        appid: 'app123',
-        appsecret: '333',
-        user_email: "songwenbin@outlook.com",
-        user_token: token
-      },
-      header: {
-        'Content-Type': 'application/json'
-      },
+  DuiFunction: function(test) {
+    var that = this 
+    wx.chooseVideo({
+      sourceType: ['album', 'camera'],
+      maxDuration: 60,
+      camera: 'back',
       success: function (res) {
-        console.log(res.data)
-        if (res.data.status == 400) {
-          wx.showToast({
-            icon: "success",
-            title: "已投票",
-            duration: 2000
-          })
-        } else if (res.data.status == 204) {
-          wx.showToast({
-            icon: "success",
-            title: "已投票",
-            duration: 2000
-          })
-        } else if (res.data.status == 200) {
-          wx.showToast({
-            icon: "success",
-            title: "投票成功",
-            duration: 2000
-          })
-        }
+        const wxsrc = res.tempFilePath
+        console.log(wx)
+        battle.user_id = that.data.userid
+        battle.user_token = that.data.token
+        battle.duiid = test.target.id
+        battle.CreateBattle(wxsrc)
+      },
+      fail: function ({errMsg}) {
+        console.log('chooseImage fail, err is', errMsg)
       }
-    }
-    )
+    })
   },
 
   GetBattlesById: function (id) {
@@ -93,7 +60,28 @@ Page({
           duirightid: res.data.right_video_id,
         })
         wx.navigateTo({
-          url: '../challenge/challenge?side=left&id=' + res.data.id + '&side=' + that.data.side + '&duileftid=' + that.data.duileftid + '&duirightid=' + that.data.duirightid
+          url: '../index/index?side=left&id=' + res.data.id + '&side=' + that.data.side + '&duileftid=' + that.data.duileftid + '&duirightid=' + that.data.duirightid
+        })
+      })
+  },
+  GetBattle: function (id) {
+    var that = this
+    console.log(that.data.token);
+    app.request()
+      .get('https://dd.doudouapp.com/api/v1/battles/' + id + '.json')
+      .query({
+        appid: 'app123',
+        appsecret: '333',
+        user_email: 'songwenbin@outlook.com',
+        user_token: that.data.token
+      })
+      .end()
+      .then(function (res) {
+        console.log(res.data)
+        that.setData({
+          battle: res.data,
+          duileftid: res.data.left_video_id,
+          duirightid: res.data.right_video_id,
         })
       })
   },
@@ -147,7 +135,7 @@ Page({
           token: res.data.authentication_token,
           userid: res.data.id
         })
-        that.GetBattles()
+        that.GetBattle(that.data.targetid)
       });
   }
 })

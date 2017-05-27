@@ -1,0 +1,15 @@
+<!--index.wxml-->
+
+<view class="container">
+    <text>{{battle.title}}</text> 
+    <view class="flex-wrp" style="flex-direction:row;">
+      <video id="leftvideo" src="{{battle.left_video_url}}"></video>
+      <video id="rightvideo" src="{{battle.right_video_url}}"></video>
+    </view>
+     <view wx:if="{{battle.id == targetid && side == 'left'}}"> <button  id="{{duirightid}}" type="default" bindtap="DuiFunction">挑战右边</button> </view>
+     <view wx:if="{{battle.id == targetid && side == 'right'}}"> <button id="{{duileftid}}" type="default" bindtap="DuiFunction">挑战左边</button> </view>
+    
+  <view><progress id="aaa" percent="60" activeColor="blue" backgroundColor="red" stroke-width="20" /></view>
+
+</view>
+

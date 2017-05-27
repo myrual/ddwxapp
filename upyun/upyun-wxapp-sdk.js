@@ -20,9 +20,7 @@ Upyun.prototype.upload = function (options) {
   var data = [ 'POST', '/' + self.bucket, date, policy ].join('&')
   console.log(data)
   self.getSignature(data, function (err, signature) {
-    console.log('=================2')
     console.log(signature)
-    console.log('=================2')
     if (err) {
       options.fail && options.fail(err)
       options.complete && options.complete(err)
@@ -50,9 +48,6 @@ Upyun.prototype.getSignature = function (data, cb) {
       data: data
     },
     success: function (res) {
-      console.log('=================1')
-      console.log(res.data)
-      console.log('=================1')
       //cb(null, res.data.signature)
       //cb(null, res.data.result)
       cb(null, res.data.result.substring(0, res.data.result.length-1))
