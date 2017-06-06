@@ -71,6 +71,22 @@ App({
                       },
                       success: function (res) {
                         console.log(res.data)
+                        wx.request({
+                          url: 'https://dd.doudouapp.com/api/v1/wxappuserverify.json',
+                          method: 'GET',
+                          data: {
+                            appid: 'wxapp',
+                            appsecret: 'wxapp1234!@',
+                            user_id: that.globalData.userid,
+                            session: that.globalData.usersession
+                          },
+                          header: {
+                            'Content-Type': 'application/json'
+                          },
+                          success: function (res) {
+                            console.log(res.data)
+                          }
+                        })
                       }
                     }
 
