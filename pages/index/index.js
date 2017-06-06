@@ -39,10 +39,8 @@ Page({
       url: 'https://dd.doudouapp.com/api/v1/battles/' + id + '/follow_' + side + '_video.json',
       method: 'POST',
       data: {
-        appid: 'app123',
-        appsecret: '333',
-        user_email: "songwenbin@outlook.com",
-        user_token: token
+        appid: 'wxapp',
+        appsecret: 'wxapp1234!@',
       },
       header: {
         'Content-Type': 'application/json'
@@ -79,10 +77,8 @@ Page({
     app.request()
       .get('https://dd.doudouapp.com/api/v1/battles/'+id+'.json')
       .query({
-        appid: 'app123',
-        appsecret: '333',
-        user_email: 'songwenbin@outlook.com',
-        user_token: that.data.token
+        appid: 'wxapp',
+        appsecret: 'wxapp1234!@',
       })
       .end()
       .then(function (res) {
@@ -103,10 +99,8 @@ Page({
     app.request()
       .get('https://dd.doudouapp.com/api/v1/battles.json')
       .query({
-        appid: 'app123',
-        appsecret: '333',
-        user_email: 'songwenbin@outlook.com',
-        user_token: that.data.token
+        appid: 'wxapp',
+        appsecret: 'wxapp1234!@',
       })
       .end()
       .then(function (res) {
@@ -135,10 +129,8 @@ Page({
     app.request()
       .post('https://dd.doudouapp.com/users/sign_in.json')
       .query({
-        appid: 'app123',
-        appsecret: '333',
-        email: 'songwenbin@outlook.com',
-        password: 'songwenbin'
+        appid: 'wxapp',
+        appsecret: 'wxapp1234!@',
       })
       .end()
       .then(function (res) {
