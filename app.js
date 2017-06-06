@@ -4,13 +4,23 @@ App({
     wx.login({
       success: function (res) {
         if (res.code) {
+          console.log("js code is :" + res.code)
           //发起网络请求
           wx.request({
-            url: 'https://dd.doudouapp.com/users/wxlogin',
+            url: 'https://dd.doudouapp.com/api/v1/wxappauths.json',
+            method: 'GET',
             data: {
               code: res.code
+            },
+            header: {
+              'Content-Type': 'application/json'
+            },
+            success: function (res) {
+              console.log(res.data)
             }
-          })
+          }
+          
+          )
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
         }
@@ -24,19 +34,44 @@ App({
     }else{
       //调用登录接口
       wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
+        success: function (res) {
+          if (res.code) {
+            console.log("js code is :" + res.code)
+            //发起网络请求
+            wx.request({
+              url: 'https://dd.doudouapp.com/api/v1/wxappauths.json',
+              method: 'GET',
+              data: {
+                code: res.code
+              },
+              header: {
+                'Content-Type': 'application/json'
+              },
+              success: function (res) {
+                console.log(res.data)
+                that.globalData.userid = loginres.data.user_id;
+                that.globalData.usersession = loginres.data.session;
+                wx.getUserInfo({
+                  success: function (res) {
+                    that.globalData.userInfo = res.userInfo
+                    typeof cb == "function" && cb(that.globalData.userInfo)
+                  }
+                })
+              }
             }
-          })
+
+            )
+          } else {
+            console.log('获取用户登录态失败！' + res.errMsg)
+          }
         }
       })
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    userid: null,
+    usersession: null
   },
   request: function (method, url, data, header) {
     if (typeof method === 'object') {

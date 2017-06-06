@@ -2,26 +2,27 @@
 
 <!--<view class="container">-->
   <view class="unit" wx:for="{{battles}}">
-    <view class="title-style">
-    <text id="title-style" >{{item.title}}</text>
-    </view>
-    <view class="flex-wrp" style="flex-direction:row;">
-      <video id="leftvideo" src="{{item.left_video_url}}"></video>
-      <video id="rightvideo" src="{{item.right_video_url}}"></video>
-    </view>
-    <view class="flex-wrp" style="flex-direction:row;">
+
+  <view class="page-head">
+    <view class="page-head-title">{{item.title}}</view>
+  </view>
+  <view class="flex-wrp" style="flex-direction:row;">
+      <video class="flex-item" src="{{item.left_video_url}}"></video>
+      <video class="flex-item" src="{{item.right_video_url}}"></video>
+  </view>
+  <view class="flex-wrp" style="flex-direction:row;">
         <button id="{{item.id}}" size="mini" type="default" style="float:left" bindtap="LeftFollow">投票左边</button>
         <text style="float:left"> {{item.left_votes}}</text>
     
         <button id="{{item.id}}" size="mini" type="default" style="float:right" bindtap="RightFollow">投票右边</button>
         <text style="float:right"> {{item.right_votes}}</text>
-     </view>
-     <view wx:if="{{item.id == targetid && side == 'left'}}"> <button  id="{{duirightid}}" type="default" bindtap="DuiFunction">挑战右边</button> </view>
-     <view wx:if="{{item.id == targetid && side == 'right'}}"> <button id="{{duileftid}}" type="default" bindtap="DuiFunction">挑战左边</button> </view>
+  </view>
+  <view wx:if="{{item.id == targetid && side == 'left'}}"> <button  id="{{duirightid}}" type="default" bindtap="DuiFunction">挑战右边</button> </view>
+  <view wx:if="{{item.id == targetid && side == 'right'}}"> <button id="{{duileftid}}" type="default" bindtap="DuiFunction">挑战左边</button> </view>
     
   <view><progress id="votes" percent="{{item.left_votes/(item.left_votes+item.right_votes)*100}}" activeColor="blue" backgroundColor="red" stroke-width="30" /></view>
     
-
+    <view class="page-line"></view>
    </view>
    
 <!-- </view> -->

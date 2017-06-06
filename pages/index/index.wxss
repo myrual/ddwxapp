@@ -29,8 +29,39 @@
 #rightvideo {
   width: 180px;
 }
-
+.video_player{
+  width: 50%;
+  height: 300rpx;
+  font-size: 26rpx;
+}
 .title {
   align-items:center;
 }
+.battle-section-title{
+  margin-bottom: 10rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  display: inline-block;
+  text-align: center;
+}
+.flex-wrp{
+  margin-top: 60rpx;
+  display:flex;
+}
+.flex-item{
+  width: 50%;
+  height: 300rpx;
+  font-size: 26rpx;
+}
 
+.page-head{
+  text-align: center;
+}
+.page-head-title{
+  display: inline-block;
+}
+.page-line{
+  margin: 2 auto;
+  width: 150rpx;
+  height: 2rpx;
+}
