@@ -42,7 +42,9 @@ App({
               url: 'https://dd.doudouapp.com/api/v1/wxappauths.json',
               method: 'GET',
               data: {
-                code: res.code
+                code: res.code,
+                appid: 'wxapp',
+                appsecret: 'wxapp1234wu'
               },
               header: {
                 'Content-Type': 'application/json'
@@ -54,6 +56,25 @@ App({
                 wx.getUserInfo({
                   success: function (res) {
                     that.globalData.userInfo = res.userInfo
+                    wx.request({
+                      url:'https://dd.doudouapp.com/api/v1/wxappuserupdate.json',
+                      method: 'POST',
+                      data: {
+                        appid: 'wxapp',
+                        appsecret:'wxapp1234wu',
+                        nickname: that.globalData.userInfo.nickname,
+                        avatarurl: that.globalData.userInfo.avatarUrl,
+                        user_id: that.globalData.userid
+                      },
+                      header: {
+                        'Content-Type': 'application/json'
+                      },
+                      success: function (res) {
+                        console.log(res.data)
+                      }
+                    }
+
+                    )
                     typeof cb == "function" && cb(that.globalData.userInfo)
                   }
                 })
