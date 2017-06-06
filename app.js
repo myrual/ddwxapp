@@ -49,8 +49,8 @@ App({
               },
               success: function (res) {
                 console.log(res.data)
-                that.globalData.userid = loginres.data.user_id;
-                that.globalData.usersession = loginres.data.session;
+                that.globalData.userid = res.data.user_id;
+                that.globalData.usersession = res.data.session;
                 wx.getUserInfo({
                   success: function (res) {
                     that.globalData.userInfo = res.userInfo
