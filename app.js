@@ -44,7 +44,7 @@ App({
               data: {
                 code: res.code,
                 appid: 'wxapp',
-                appsecret: 'wxapp1234wu'
+                appsecret: 'wxapp1234!@'
               },
               header: {
                 'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ App({
                       method: 'POST',
                       data: {
                         appid: 'wxapp',
-                        appsecret:'wxapp1234wu',
+                        appsecret: 'wxapp1234!@',
                         nickname: that.globalData.userInfo.nickname,
                         avatarurl: that.globalData.userInfo.avatarUrl,
                         user_id: that.globalData.userid
