@@ -41,8 +41,6 @@ Page({
       data: {
         appid: 'wxapp',
         appsecret: 'wxapp1234!@',
-        user_email: "songwenbin@outlook.com",
-        user_token: token
       },
       header: {
         'Content-Type': 'application/json'
@@ -81,8 +79,6 @@ Page({
       .query({
         appid: 'wxapp',
         appsecret: 'wxapp1234!@',
-        user_email: 'songwenbin@outlook.com',
-        user_token: that.data.token
       })
       .end()
       .then(function (res) {
@@ -105,8 +101,6 @@ Page({
       .query({
         appid: 'wxapp',
         appsecret: 'wxapp1234!@',
-        user_email: 'songwenbin@outlook.com',
-        user_token: that.data.token
       })
       .end()
       .then(function (res) {
@@ -137,8 +131,6 @@ Page({
       .query({
         appid: 'wxapp',
         appsecret: 'wxapp1234!@',
-        email: 'songwenbin@outlook.com',
-        password: 'songwenbin'
       })
       .end()
       .then(function (res) {
