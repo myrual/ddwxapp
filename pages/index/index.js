@@ -126,28 +126,35 @@ Page({
       duirightid: that.options.duirightid,
     })
 
-    app.getUserInfo(function(userInfo){
+    app.getUserInfo(function(userInfo, userid, usersession){
       that.setData({
-        userInfo:userInfo
+        userInfo:userInfo,
+        userid: userid,
+        usersession: usersession
       })
-    })
+      console.log("====================")
+      console.log(that.data.userInfo)
+      console.log(that.data.userid)
+      console.log(that.data.usersession)
+      console.log("====================")
 
-    app.request()
-      .post('https://dd.doudouapp.com/users/sign_in.json')
-      .query({
-        appid: 'app123',
-        appsecret: '333',
-        email: 'songwenbin@outlook.com',
-        password: 'songwenbin'
-      })
-      .end()
-      .then(function (res) {
-        console.log(res.data)
-        that.setData({
-          token: res.data.authentication_token,
-          userid: res.data.id
+      app.request()
+        .post('https://dd.doudouapp.com/users/sign_in.json')
+        .query({
+          appid: 'app123',
+          appsecret: '333',
+          email: 'songwenbin@outlook.com',
+          password: 'songwenbin'
         })
-        that.GetBattles()
-      });
+        .end()
+        .then(function (res) {
+          console.log(res.data)
+          that.setData({
+            token: res.data.authentication_token,
+            userid: res.data.id
+          })
+          that.GetBattles()
+        });
+    })
   }
 })

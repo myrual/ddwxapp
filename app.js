@@ -1,31 +1,6 @@
 //app.js
 App({
   onLaunch: function () {
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-          console.log("js code is :" + res.code)
-          //发起网络请求
-          wx.request({
-            url: 'https://dd.doudouapp.com/api/v1/wxappauths.json',
-            method: 'GET',
-            data: {
-              code: res.code
-            },
-            header: {
-              'Content-Type': 'application/json'
-            },
-            success: function (res) {
-              console.log(res.data)
-            }
-          }
-          
-          )
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-        }
-      }
-    });
   },
   getUserInfo:function(cb){
     var that = this
@@ -54,7 +29,7 @@ App({
                 wx.getUserInfo({
                   success: function (res) {
                     that.globalData.userInfo = res.userInfo
-                    typeof cb == "function" && cb(that.globalData.userInfo)
+                    typeof cb == "function" && cb(that.globalData.userInfo, that.globalData.userid, that.globalData.usersession)
                   }
                 })
               }
