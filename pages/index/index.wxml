@@ -1,29 +1,39 @@
-<!--index.wxml-->
-
-<!--<view class="container">-->
   <view class="unit" wx:for="{{battles}}">
 
-  <view class="page-head">
-    <view class="page-head-title">{{item.title}}</view>
-  </view>
-  <view class="flex-wrp" style="flex-direction:row;">
-      <video class="flex-item" src="{{item.left_video_url}}"></video>
-      <video class="flex-item" src="{{item.right_video_url}}"></video>
-  </view>
-  <view class="flex-wrp" style="flex-direction:row;">
-        <button id="{{item.id}}" size="mini" type="default" style="float:left" bindtap="LeftFollow">投票左边</button>
-        <text style="float:left"> {{item.left_votes}}</text>
-    
-        <button id="{{item.id}}" size="mini" type="default" style="float:right" bindtap="RightFollow">投票右边</button>
-        <text style="float:right"> {{item.right_votes}}</text>
-  </view>
-  <view wx:if="{{item.id == targetid && side == 'left'}}"> <button  id="{{duirightid}}" type="default" bindtap="DuiFunction">挑战右边</button> </view>
-  <view wx:if="{{item.id == targetid && side == 'right'}}"> <button id="{{duileftid}}" type="default" bindtap="DuiFunction">挑战左边</button> </view>
-    
-  <view><progress id="votes" percent="{{item.left_votes/(item.left_votes+item.right_votes)*100}}" activeColor="blue" backgroundColor="red" stroke-width="30" /></view>
-    
-    <view class="page-line"></view>
-   </view>
-   
-<!-- </view> -->
+    <view class="battle-left-vs-right">
+      <view class="page-section-spacing">
+        <view class="flex-wrp" style="flex-direction:row;">
+          <view class="battle-left-owner text-right">左边</view>
+          <view class="battle-vs-owner text-center">
+            <text>VS</text>
+          </view>
+          <view class="battle-right-owner text-left"><text>左边</text></view>
+        </view>
+      <view class="battle_title">
+        <text>{{item.title}}</text>
+      </view>
+      </view>
+      <view class="page-section-spacing">
+        <view class="flex-wrp" style="flex-direction:row;">
+            <video class="flex-item demo-text-1" src="{{item.left_video_url}}"></video>
+            <video class="flex-item demo-text-2" src="{{item.right_video_url}}"></video>
+        </view>
+      </view>
+      <view class="page-section-spacing">
+        <view class="flex-wrp" style="flex-direction:row;">
+          <view class="voter_bar vote_button text-left">
+            <button class="mini-btn" type="default" size="mini" bindtap="LeftFollow">老虎</button>
+          </view>
+          <view class="voter_bar vote_button text-right">
+            <button class="mini-btn" type="default" size="mini" bindtap="RightFollow">大象</button>
+          </view>
+        </view>
+        <view><progress id="votes" percent="{{item.left_votes/(item.left_votes+item.right_votes)*100}}" activeColor="#2782D7" backgroundColor="red" stroke-width="30" /></view>
+      </view>
+
+    </view>
+</view>
+
+
+
 

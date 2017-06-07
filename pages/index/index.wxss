@@ -1,52 +1,24 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
-.unit {
-  margin-top: 50px;
-}
-
-#leftvideo {
-  width: 180px;
-}
-#rightvideo {
-  width: 180px;
-}
-.video_player{
-  width: 50%;
-  height: 300rpx;
-  font-size: 26rpx;
-}
-.title {
-  align-items:center;
-}
-.battle-section-title{
-  margin-bottom: 10rpx;
-  padding-left: 30rpx;
-  padding-right: 30rpx;
-  display: inline-block;
-  text-align: center;
-}
 .flex-wrp{
   margin-top: 60rpx;
   display:flex;
+}
+
+.battle-left-vs-right{
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+
+.battle-left-owner{
+  width: 40%;
+  font-size: 40rpx;
+}
+.battle-right-owner{
+  width: 40%;
+  font-size: 40rpx;
+}
+.battle-vs-owner{
+  width: 20%;
+  font-size: 26rpx;
 }
 .flex-item{
   width: 50%;
@@ -54,14 +26,40 @@
   font-size: 26rpx;
 }
 
-.page-head{
+.flex-item-V{
+  margin: 0 auto;
+  width: 300rpx;
+  height: 200rpx;
+}
+
+.battle_title{
+  text-align: center;  
+  padding: 30rpx 50rpx;
+}
+.voter_bar{
+  width: 50%;
+  height: 100rpx;
+  font-size: 26rpx;
+}
+.vote_button{
+  position: relative;
+  align-items: center;
+}
+.vote_button:before{
+  transform: translate(-50%, -50%);
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+.text-center{
   text-align: center;
 }
-.page-head-title{
-  display: inline-block;
-}
-.page-line{
-  margin: 2 auto;
+.battle-space-line{
+  margin: 0 auto;
   width: 150rpx;
   height: 2rpx;
+  background-color: #D8D8D8;
 }
