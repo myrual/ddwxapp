@@ -41,6 +41,8 @@ Page({
       data: {
         appid: 'wxapp',
         appsecret: 'wxapp1234!@',
+        user_id: app.globalData.userid,
+        session: app.globalData.usersession
       },
       header: {
         'Content-Type': 'application/json'
@@ -101,10 +103,13 @@ Page({
       .query({
         appid: 'wxapp',
         appsecret: 'wxapp1234!@',
+        user_id: app.globalData.userid,
+        session: app.globalData.usersession
       })
       .end()
       .then(function (res) {
         console.log(res.data[0])
+        console.log(res.data[1])
         that.setData({
           battles: res.data
         })
@@ -124,22 +129,8 @@ Page({
       that.setData({
         userInfo:userInfo
       })
+      that.GetBattles()
     })
 
-    app.request()
-      .post('https://dd.doudouapp.com/users/sign_in.json')
-      .query({
-        appid: 'wxapp',
-        appsecret: 'wxapp1234!@',
-      })
-      .end()
-      .then(function (res) {
-        console.log(res.data)
-        that.setData({
-          token: res.data.authentication_token,
-          userid: res.data.id
-        })
-        that.GetBattles()
-      });
   }
 })

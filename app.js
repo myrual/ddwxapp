@@ -53,6 +53,7 @@ App({
                 console.log(res.data)
                 that.globalData.userid = res.data.user_id;
                 that.globalData.usersession = res.data.session;
+                wx.setStorageSync("userid", res.data.user_id);
                 wx.getUserInfo({
                   success: function (res) {
                     that.globalData.userInfo = res.userInfo

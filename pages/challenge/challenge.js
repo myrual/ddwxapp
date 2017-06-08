@@ -47,9 +47,7 @@ Page({
       .get('https://dd.doudouapp.com/api/v1/battles/' + id + '.json')
       .query({
         appid: 'wxapp',
-        appsecret: 'wxapp1234!@',
-        user_email: 'songwenbin@outlook.com',
-        user_token: that.data.token
+        appsecret: 'wxapp1234!@'
       })
       .end()
       .then(function (res) {

@@ -23,8 +23,8 @@
             <video class="flex-item demo-text-2" src="{{item.right_video_url}}"></video>
         </view>
       </view>
-      <view class="page-section-spacing">
-        <view class="flex-wrp" style="flex-direction:row;">
+      <view  class="page-section-spacing">
+        <view wx:if="{{item.already_vote == 'NA'}}" class="flex-wrp" style="flex-direction:row;">
           <view class="voter_bar vote_button text-left">
             <button id="{{item.id}}" class="mini-btn" type="default" size="mini" bindtap="LeftFollow">顶</button>
           </view>
