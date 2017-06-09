@@ -2,6 +2,7 @@
 <text>videos.wxml</text>
   <view class="unit" wx:for="{{videos}}">
           <text>{{item.title}}</text>
+            <video src="{{item.video_url}}"></video>
   </view>
 
 <view class="image-plus image-plus-nb" bindtap="chooseImage">
