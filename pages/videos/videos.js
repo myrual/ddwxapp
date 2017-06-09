@@ -6,8 +6,7 @@ const upyun = new Upyun({
   operator: 'doudouapp',
   getSignatureUrl: 'https://dd.doudouapp.com/api/v1/upyunauths.json'
 })
-const Battle = require('../battle.js')
-const battle = new Battle()
+
 Page({
 
   /**
@@ -124,7 +123,7 @@ Page({
               },
               success: function (res) {
                 console.log("get video id :" + res.data.id)
-                that.UploadUpyun(wxsrc, res.data.id)
+                that.uploadUpyun(that.data.src, res.data.id)
               }
             })
           },
@@ -134,7 +133,46 @@ Page({
         })
       }
     })
-
-
-  }
+  },
+  uploadUpyun: function (wxsrc, videoid) {
+    var that = this;
+    upyun.upload({
+      localPath: wxsrc,
+      remotePath: '/uploads/uploads/' + videoid,
+      success: function (res) {
+        console.log('uploadVideo success, res is:', res)
+        that.updateVideoExt(videoid)
+        wx.showToast({
+          title: '上传成功',
+          icon: 'success',
+          duration: 1000
+        })
+      },
+      fail: function ({errMsg}) {
+        console.log('uploadVideo fail, errMsg is', errMsg)
+      }
+    })
+  },
+  updateVideoExt: function (videoid) {
+    var that = this;
+    wx.request({
+      url: 'https://dd.doudouapp.com/api/v1/videos/' + videoid + '/new_ext_video.json',
+      method: 'POST',
+      data: {
+        appid: app.globalData.appid,
+        appsecret: app.globalData.appsecret,
+        user_id: app.globalData.userid,
+        session: app.globalData.usersession,
+        provider: 'upyun',
+        videourl: 'http://dd-doudouapp-com.b0.upaiyun.com/uploads/uploads/' + videoid,
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res)
+        console.log("Upload video to doudou")
+      }
+    })
+  },
 })
