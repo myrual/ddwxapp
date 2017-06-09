@@ -1,14 +1,15 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/challenge/challenge",
-    "pages/uppage/index"
+    "pages/uppage/index",
+    "pages/videos/videos"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "list": [
@@ -17,8 +18,8 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/uppage/index",
-        "text": "还是首页"
+        "pagePath": "pages/videos/videos",
+        "text": "My"
       }
     ]
   }

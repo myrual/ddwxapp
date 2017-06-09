@@ -107,6 +107,8 @@ App({
     }
   },
   globalData:{
+    appid: 'wxapp',
+    appsecret: 'wxapp1234!@',
     userInfo:null,
     userid: null,
     usersession: null

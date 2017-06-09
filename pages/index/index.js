@@ -39,8 +39,8 @@ Page({
       url: 'https://dd.doudouapp.com/api/v1/battles/' + id + '/follow_' + side + '_video.json',
       method: 'POST',
       data: {
-        appid: 'wxapp',
-        appsecret: 'wxapp1234!@',
+        appid: app.globalData.appid,
+        appsecret: app.globalData.appsecret,
         user_id: app.globalData.userid,
         session: app.globalData.usersession
       },
@@ -79,8 +79,10 @@ Page({
     app.request()
       .get('https://dd.doudouapp.com/api/v1/battles/'+id+'.json')
       .query({
-        appid: 'wxapp',
-        appsecret: 'wxapp1234!@',
+        appid: app.globalData.appid,
+        appsecret: app.globalData.appsecret,
+        user_id: app.globalData.userid,
+        session: app.globalData.usersession
       })
       .end()
       .then(function (res) {
@@ -101,8 +103,8 @@ Page({
     app.request()
       .get('https://dd.doudouapp.com/api/v1/battles.json')
       .query({
-        appid: 'wxapp',
-        appsecret: 'wxapp1234!@',
+        appid: app.globalData.appid,
+        appsecret: app.globalData.appsecret,
         user_id: app.globalData.userid,
         session: app.globalData.usersession
       })

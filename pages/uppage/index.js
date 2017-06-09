@@ -2,7 +2,7 @@ const Upyun = require('../../upyun/upyun-wxapp-sdk')
 const upyun = new Upyun({
   bucket: 'dd-doudouapp-com',
   operator: 'doudouapp1234',
-  getSignatureUrl: 'http://localhost:8080'
+  getSignatureUrl: 'https://dd.doudouapp.com/v1/upyunauths'
 })
 
 Page({
