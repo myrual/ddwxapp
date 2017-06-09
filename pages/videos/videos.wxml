@@ -1,0 +1,10 @@
+<!--videos.wxml-->
+<text>videos.wxml</text>
+  <view class="unit" wx:for="{{videos}}">
+          <text>{{item.title}}</text>
+  </view>
+
+<view class="image-plus image-plus-nb" bindtap="chooseImage">
+  <view class="image-plus-horizontal"></view>
+  <view class="image-plus-vertical"></view>
+</view>
