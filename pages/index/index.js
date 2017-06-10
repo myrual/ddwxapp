@@ -134,5 +134,12 @@ Page({
       that.GetBattles()
     })
 
+  },
+  addVideoInTopics: function () {
+    const self = this
+    var that = this;
+    wx.navigateTo({
+      url: '../openbattle/openbattle'
+    })
   }
 })

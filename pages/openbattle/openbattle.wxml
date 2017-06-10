@@ -1,0 +1,4 @@
+<!--openbattle.wxml-->
+<view class="unit" wx:for="{{opentopics}}">
+            <button id="{{item.id}}" class="btn btn-primary" type="default" size="mini" bindtap="chooseImage">{{item.title}}</button>
+</view>

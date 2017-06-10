@@ -4,7 +4,8 @@
     "pages/challenge/challenge",
     "pages/uppage/index",
     "pages/videos/videos",
-    "pages/uploadsuccess/uploadsuccess"
+    "pages/uploadsuccess/uploadsuccess",
+    "pages/openbattle/openbattle"
   ],
   "window": {
     "backgroundTextStyle": "light",

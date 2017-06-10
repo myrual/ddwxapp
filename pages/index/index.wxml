@@ -38,6 +38,7 @@
     </view>
 </view>
 
-
-
-
+<view class="image-plus image-plus-nb" bindtap="addVideoInTopics">
+  <view class="image-plus-horizontal"></view>
+  <view class="image-plus-vertical"></view>
+</view>

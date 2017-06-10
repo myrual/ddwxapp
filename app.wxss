@@ -236,3 +236,8 @@ form{
   transform: translate(-50%, -50%);
 }
 
+.image-plus{
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}

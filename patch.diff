@@ -1,0 +1,186 @@
+From af0c03f0027ee9aecf0f35d8641af9cd6be41e16 Mon Sep 17 00:00:00 2001
+From: lilin <lilin@myrual.me>
+Date: Tue, 6 Jun 2017 20:23:45 +0800
+Subject: [PATCH] login ok, need to prepare update nickname and url
+
+---
+ app.js                 | 53 +++++++++++++++++++++++++++++++++++++++++---------
+ pages/index/index.wxml | 25 ++++++++++++------------
+ pages/index/index.wxss | 33 ++++++++++++++++++++++++++++++-
+ 3 files changed, 89 insertions(+), 22 deletions(-)
+
+diff --git a/app.js b/app.js
+index eb52b97..ffc7ddd 100644
+--- a/app.js
++++ b/app.js
+@@ -4,13 +4,23 @@ App({
+     wx.login({
+       success: function (res) {
+         if (res.code) {
++          console.log("js code is :" + res.code)
+           //发起网络请求
+           wx.request({
+-            url: 'https://dd.doudouapp.com/users/wxlogin',
++            url: 'https://dd.doudouapp.com/api/v1/wxappauths.json',
++            method: 'GET',
+             data: {
+               code: res.code
++            },
++            header: {
++              'Content-Type': 'application/json'
++            },
++            success: function (res) {
++              console.log(res.data)
+             }
+-          })
++          }
++          
++          )
+         } else {
+           console.log('获取用户登录态失败！' + res.errMsg)
+         }
+@@ -24,19 +34,44 @@ App({
+     }else{
+       //调用登录接口
+       wx.login({
+-        success: function () {
+-          wx.getUserInfo({
+-            success: function (res) {
+-              that.globalData.userInfo = res.userInfo
+-              typeof cb == "function" && cb(that.globalData.userInfo)
++        success: function (res) {
++          if (res.code) {
++            console.log("js code is :" + res.code)
++            //发起网络请求
++            wx.request({
++              url: 'https://dd.doudouapp.com/api/v1/wxappauths.json',
++              method: 'GET',
++              data: {
++                code: res.code
++              },
++              header: {
++                'Content-Type': 'application/json'
++              },
++              success: function (res) {
++                console.log(res.data)
++                that.globalData.userid = loginres.data.user_id;
++                that.globalData.usersession = loginres.data.session;
++                wx.getUserInfo({
++                  success: function (res) {
++                    that.globalData.userInfo = res.userInfo
++                    typeof cb == "function" && cb(that.globalData.userInfo)
++                  }
++                })
++              }
+             }
+-          })
++
++            )
++          } else {
++            console.log('获取用户登录态失败！' + res.errMsg)
++          }
+         }
+       })
+     }
+   },
+   globalData:{
+-    userInfo:null
++    userInfo:null,
++    userid: null,
++    usersession: null
+   },
+   request: function (method, url, data, header) {
+     if (typeof method === 'object') {
+diff --git a/pages/index/index.wxml b/pages/index/index.wxml
+index 942e480..557ff19 100644
+--- a/pages/index/index.wxml
++++ b/pages/index/index.wxml
+@@ -2,26 +2,27 @@
+ 
+ <!--<view class="container">-->
+   <view class="unit" wx:for="{{battles}}">
+-    <view class="title-style">
+-    <text id="title-style" >{{item.title}}</text>
+-    </view>
+-    <view class="flex-wrp" style="flex-direction:row;">
+-      <video id="leftvideo" src="{{item.left_video_url}}"></video>
+-      <video id="rightvideo" src="{{item.right_video_url}}"></video>
+-    </view>
+-    <view class="flex-wrp" style="flex-direction:row;">
++
++  <view class="page-head">
++    <view class="page-head-title">{{item.title}}</view>
++  </view>
++  <view class="flex-wrp" style="flex-direction:row;">
++      <video class="flex-item" src="{{item.left_video_url}}"></video>
++      <video class="flex-item" src="{{item.right_video_url}}"></video>
++  </view>
++  <view class="flex-wrp" style="flex-direction:row;">
+         <button id="{{item.id}}" size="mini" type="default" style="float:left" bindtap="LeftFollow">投票左边</button>
+         <text style="float:left"> {{item.left_votes}}</text>
+     
+         <button id="{{item.id}}" size="mini" type="default" style="float:right" bindtap="RightFollow">投票右边</button>
+         <text style="float:right"> {{item.right_votes}}</text>
+-     </view>
+-     <view wx:if="{{item.id == targetid && side == 'left'}}"> <button  id="{{duirightid}}" type="default" bindtap="DuiFunction">挑战右边</button> </view>
+-     <view wx:if="{{item.id == targetid && side == 'right'}}"> <button id="{{duileftid}}" type="default" bindtap="DuiFunction">挑战左边</button> </view>
++  </view>
++  <view wx:if="{{item.id == targetid && side == 'left'}}"> <button  id="{{duirightid}}" type="default" bindtap="DuiFunction">挑战右边</button> </view>
++  <view wx:if="{{item.id == targetid && side == 'right'}}"> <button id="{{duileftid}}" type="default" bindtap="DuiFunction">挑战左边</button> </view>
+     
+   <view><progress id="votes" percent="{{item.left_votes/(item.left_votes+item.right_votes)*100}}" activeColor="blue" backgroundColor="red" stroke-width="30" /></view>
+     
+-
++    <view class="page-line"></view>
+    </view>
+    
+ <!-- </view> -->
+diff --git a/pages/index/index.wxss b/pages/index/index.wxss
+index c6a779c..f1d82aa 100644
+--- a/pages/index/index.wxss
++++ b/pages/index/index.wxss
+@@ -29,8 +29,39 @@
+ #rightvideo {
+   width: 180px;
+ }
+-
++.video_player{
++  width: 50%;
++  height: 300rpx;
++  font-size: 26rpx;
++}
+ .title {
+   align-items:center;
+ }
++.battle-section-title{
++  margin-bottom: 10rpx;
++  padding-left: 30rpx;
++  padding-right: 30rpx;
++  display: inline-block;
++  text-align: center;
++}
++.flex-wrp{
++  margin-top: 60rpx;
++  display:flex;
++}
++.flex-item{
++  width: 50%;
++  height: 300rpx;
++  font-size: 26rpx;
++}
+ 
++.page-head{
++  text-align: center;
++}
++.page-head-title{
++  display: inline-block;
++}
++.page-line{
++  margin: 2 auto;
++  width: 150rpx;
++  height: 2rpx;
++}
+\ No newline at end of file
+-- 
+2.10.1
+
