@@ -5,7 +5,7 @@
       <view class="battle_title">
         <text>{{item.title}}</text>
       </view>
-        <view class="flex-wrp" style="flex-direction:row;">
+        <view class="flex-wrp battle_twosides" style="flex-direction:row;">
         
           <view class="battle-left-owner text-right">
           <text>{{item.left_username}}</text>

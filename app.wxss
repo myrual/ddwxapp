@@ -133,7 +133,7 @@ form{
 }
 .page-section-spacing{
   box-sizing: border-box;
-  padding: 0 80rpx;
+  padding: 0 0 10rpx 30rpx;
 }
 .page-section-title{
   font-size: 28rpx;
