@@ -5,7 +5,8 @@
     "pages/uppage/index",
     "pages/videos/videos",
     "pages/uploadsuccess/uploadsuccess",
-    "pages/openbattle/openbattle"
+    "pages/openbattle/openbattle",
+    "pages/videointopics/videointopics"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,11 +18,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "斗斗"
+      },
+      {
+        "pagePath": "pages/videointopics/videointopics",
+        "text": "话题"
       },
       {
         "pagePath": "pages/videos/videos",
-        "text": "My"
+        "text": "我的视频"
       }
     ]
   }

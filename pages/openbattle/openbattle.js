@@ -90,10 +90,10 @@ Page({
   startRecording: function (){
 
   },
-  chooseImage: function () {
+  chooseImage: function (test) {
     const self = this
     var that = this;
-
+    var topicid = test.target.id;
     wx.chooseVideo({
       sourceType: ['album', 'camera'],
       maxDuration: 60,
@@ -117,7 +117,26 @@ Page({
             'Content-Type': 'application/json'
           },
           success: function (res) {
+            var video_id = res.data.id
             console.log("get video id :" + res.data.id)
+            wx.request({
+              url: 'https://dd.doudouapp.com/api/v1/addvideototopic.json',
+              method: 'POST',
+              data: {
+                appid: app.globalData.appid,
+                appsecret: app.globalData.appsecret,
+                user_id: app.globalData.userid,
+                session: app.globalData.usersession,
+                topic_id: topicid,
+                video_id: res.data.id
+              },
+              header: {
+                'Content-Type': 'application/json'
+              },
+              success: function (res) {
+                console.log("get video id :" + res.data.id)
+              }
+            })
             that.uploadUpyun(that.data.src, res.data.id)
           }
         })
@@ -151,7 +170,6 @@ Page({
             wx.navigateTo({
               url: '../uploadsuccess/uploadsuccess?videoid=' + videoid
             })
-
           }
         })
       },

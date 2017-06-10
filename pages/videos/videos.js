@@ -88,6 +88,13 @@ Page({
   onShareAppMessage: function () {
   
   },
+  addVideoInTopics: function () {
+    const self = this
+    var that = this;
+    wx.navigateTo({
+      url: '../openbattle/openbattle'
+    })
+  },
   chooseImage: function () {
     const self = this
     var that = this;
