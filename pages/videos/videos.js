@@ -72,7 +72,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    var that = this
+    console.log("pull to refresh");
+    app.request()
+      .get('https://dd.doudouapp.com/api/v1/videos.json')
+      .query({
+        appid: app.globalData.appid,
+        appsecret: app.globalData.appsecret,
+        user_id: app.globalData.userid,
+        session: app.globalData.usersession
+      })
+      .end()
+      .then(function (res) {
+        console.log("fetch all my videos successful");
+        that.setData({
+          videos: res.data
+        })
+      })
   },
 
   /**

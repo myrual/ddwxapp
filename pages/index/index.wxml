@@ -2,20 +2,22 @@
 
     <view class="battle-left-vs-right">
       <view class="page-section-spacing">
+      <view class="battle_title">
+        <text>{{item.title}}</text>
+      </view>
         <view class="flex-wrp" style="flex-direction:row;">
+        
           <view class="battle-left-owner text-right">
           <text>{{item.left_username}}</text>
           </view>
           <view class="battle-vs-owner text-center">
-            <text>VS</text>
+            <text></text>
           </view>
           <view class="battle-right-owner text-left">
           <text>{{item.right_username}}</text>
           </view>
         </view>
-      <view class="battle_title">
-        <text>{{item.title}}</text>
-      </view>
+
       </view>
       <view class="page-section-spacing">
         <view class="flex-wrp" style="flex-direction:row;">
@@ -36,9 +38,4 @@
       </view>
 
     </view>
-</view>
-
-<view class="image-plus image-plus-nb" bindtap="addVideoInTopics">
-  <view class="image-plus-horizontal"></view>
-  <view class="image-plus-vertical"></view>
 </view>
