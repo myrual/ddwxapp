@@ -1,0 +1,4 @@
+<!--uploadsuccess.wxml-->
+<text>uploadsuccess.wxml</text>
+<text>{{title}}</text>
+<video src="{{video_url}}"></video>

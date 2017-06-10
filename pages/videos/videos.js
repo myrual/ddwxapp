@@ -101,34 +101,22 @@ Page({
         that.setData({
           src: res.tempFilePath
         })
-        wx.chooseImage({
-          count: 1,
-          sizeType: ['compressed'],
-          sourceType: ['album'],
-          success: function (res) {
-            console.log('chooseImage success, temp path is', res.tempFilePaths[0])
-
-            wx.request({
-              url: 'https://dd.doudouapp.com/api/v1/videos.json',
-              method: 'POST',
-              data: {
-                appid: app.globalData.appid,
-                appsecret: app.globalData.appsecret,
-                user_id: app.globalData.userid,
-                session: app.globalData.usersession,
-                video_title: "myvideo123"
-              },
-              header: {
-                'Content-Type': 'application/json'
-              },
-              success: function (res) {
-                console.log("get video id :" + res.data.id)
-                that.uploadUpyun(that.data.src, res.data.id)
-              }
-            })
+        wx.request({
+          url: 'https://dd.doudouapp.com/api/v1/videos.json',
+          method: 'POST',
+          data: {
+            appid: app.globalData.appid,
+            appsecret: app.globalData.appsecret,
+            user_id: app.globalData.userid,
+            session: app.globalData.usersession,
+            video_title: "myvideo123"
           },
-          fail: function ({errMsg}) {
-            console.log('chooseImage fail, err is', errMsg)
+          header: {
+            'Content-Type': 'application/json'
+          },
+          success: function (res) {
+            console.log("get video id :" + res.data.id)
+            that.uploadUpyun(that.data.src, res.data.id)
           }
         })
       }
@@ -141,11 +129,28 @@ Page({
       remotePath: '/uploads/uploads/' + videoid,
       success: function (res) {
         console.log('uploadVideo success, res is:', res)
-        that.updateVideoExt(videoid)
-        wx.showToast({
-          title: '上传成功',
-          icon: 'success',
-          duration: 1000
+        wx.request({
+          url: 'https://dd.doudouapp.com/api/v1/videos/' + videoid + '/new_ext_video.json',
+          method: 'POST',
+          data: {
+            appid: app.globalData.appid,
+            appsecret: app.globalData.appsecret,
+            user_id: app.globalData.userid,
+            session: app.globalData.usersession,
+            provider: 'upyun',
+            videourl: 'http://dd-doudouapp-com.b0.upaiyun.com/uploads/uploads/' + videoid,
+          },
+          header: {
+            'Content-Type': 'application/json'
+          },
+          success: function (res) {
+            console.log(res)
+            console.log("Upload video to doudou")
+            wx.navigateTo({
+              url: '../uploadsuccess/uploadsuccess?videoid=' + videoid
+            })
+
+          }
         })
       },
       fail: function ({errMsg}) {
@@ -172,6 +177,14 @@ Page({
       success: function (res) {
         console.log(res)
         console.log("Upload video to doudou")
+        wx.navigateTo({
+          url: '../uploadsuccess/uploadsuccess?videoid=' + videoid
+        })
+        wx.showToast({
+          title: '上传成功',
+          icon: 'success',
+          duration: 1000
+        })
       }
     })
   },
