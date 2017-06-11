@@ -1,1 +1,4 @@
 /* videointopics.wxss */
+.btn-area{
+  width: 100%;
+}

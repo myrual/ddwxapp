@@ -1,4 +1,9 @@
 <!--videointopics.wxml-->
-<view class="unit" wx:for="{{opentopics}}">
-            <button id="{{item.id}}" class="btn btn-primary" type="default" size="mini" bindtap="choosetopic"># {{item.title}}</button>
+<view class="unit" wx:for="{{opentopics}}" wx:for-index="idx">
+  <view wx:if="{{(idx%2) == 0}}">
+    <button class="ovenbtn" id="{{item.id}}"   size="mini"     bindtap="choosetopic"># {{item.title}}</button>
+  </view>
+  <view wx:else>
+    <button class="evenbtn" id="{{item.id}}"  size="mini"     bindtap="choosetopic"># {{item.title}}</button>
+  </view>
 </view>

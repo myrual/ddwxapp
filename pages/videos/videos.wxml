@@ -4,7 +4,3 @@
             <video src="{{item.video_url}}"></video>
   </view>
 
-<view class="image-plus image-plus-nb" bindtap="addVideoInTopics">
-  <view class="plusbutton">
-  +</view>
-</view>

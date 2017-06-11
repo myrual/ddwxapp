@@ -1,7 +1,8 @@
 <!--videointopics.wxml-->
+<button class="btn-area" id="{{item.id}}" type="primary"  size="mini" bindtap="chooseImage">我也说10秒</button>
 <view class="unit" wx:for="{{opentopics}}">
-            <button id="{{item.id}}" class="btn btn-primary" type="default" size="mini" bindtap="chooseImage">{{item.title}}</button>
+
 <view wx:if="{{item.videourl != null}}"> 
-            <video  src="{{item.videourl}}"></video>
+  <video  src="{{item.videourl}}"></video>
 </view>
 </view>
