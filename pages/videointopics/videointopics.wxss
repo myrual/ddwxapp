@@ -2,3 +2,25 @@
 .btn-area{
   width: 100%;
 }
+.video_toolbar{
+}
+.owner{
+  width: 50%;
+  height: 40rp;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.empty{
+  width: 30%;
+}
+.like{
+  width: 20%;
+  height: 40rp;
+  position: relative;
+  align-items: right;
+  justify-content: center;
+}
+.flex-wrp{
+  display:flex;
+}

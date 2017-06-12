@@ -1,8 +1,15 @@
 <!--videointopics.wxml-->
-<button class="btn-area" id="{{item.id}}" type="primary"  size="mini" bindtap="chooseImage">我也说10秒</button>
+<button class="btn-area" id="{{item.id}}" type="primary"  size="mini" bindtap="chooseImage">我来说一段</button>
 <view class="unit" wx:for="{{opentopics}}">
 
 <view wx:if="{{item.videourl != null}}"> 
-  <video  src="{{item.videourl}}"></video>
+  <view>
+    <video class="btn-area" src="{{item.videourl}}"></video>
+   </view>
+   <view class="flex-wrp video_toolbar" style="flex-direction:row;">
+      <text class="owner">斗主播: {{item.owner}}</text>
+      <view class="empty"></view>
+      <button class="like" id="{{item.id}}" type="default"  size="mini"       bindtap="chooseImage">赞</button>
+  </view>
 </view>
 </view>
