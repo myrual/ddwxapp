@@ -7,9 +7,14 @@
     <video class="btn-area" src="{{item.videourl}}"></video>
    </view>
    <view class="flex-wrp video_toolbar" style="flex-direction:row;">
-      <text class="owner">斗主播: {{item.owner}}</text>
-      <view class="empty"></view>
-      <button class="like" id="{{item.id}}" type="default"  size="mini"       bindtap="chooseImage">赞</button>
+          <view class="voter_bar vote_button text-left">
+      <view class="owner">{{item.owner}}</view>
+        <image class="image user-avatar" src="{{item.avatar_url}}"/>
+      </view>
+          <view class="voter_bar vote_button text-right">
+
+            <button class="like" id="{{item.id}}" type="default"  size="mini"       bindtap="chooseImage">赞</button>
+          </view>
   </view>
 </view>
 </view>

@@ -6,21 +6,40 @@
 }
 .owner{
   width: 50%;
-  height: 40rp;
   position: relative;
   align-items: center;
   justify-content: center;
+  margin: 20rpx 20rpx 20rpx 20rpx;
+
 }
 .empty{
   width: 30%;
 }
 .like{
-  width: 20%;
-  height: 40rp;
+  width: 50%;
   position: relative;
   align-items: right;
   justify-content: center;
 }
 .flex-wrp{
   display:flex;
+}
+.voter_bar{
+  width: 50%;
+  height: 100rpx;
+  font-size: 26rpx;
+}
+.vote_button{
+  position: relative;
+  align-items: center;
+}
+.text-right{
+  text-align: right;
+}
+.text-left{
+  text-align: left;
+}
+.user-avatar{
+  height: 100px;
+  width: 100px;
 }
