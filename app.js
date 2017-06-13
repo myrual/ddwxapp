@@ -63,7 +63,7 @@ App({
                       data: {
                         appid: 'wxapp',
                         appsecret: 'wxapp1234!@',
-                        nickname: that.globalData.userInfo.nickname,
+                        nickname: that.globalData.userInfo.nickName,
                         avatarurl: that.globalData.userInfo.avatarUrl,
                         user_id: that.globalData.userid
                       },

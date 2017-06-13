@@ -1,5 +1,11 @@
 // videointopics.js
 var app = getApp()
+const Upyun = require('../../upyun/upyun-wxapp-sdk')
+const upyun = new Upyun({
+  bucket: 'dd-doudouapp-com',
+  operator: 'doudouapp',
+  getSignatureUrl: 'https://dd.doudouapp.com/api/v1/upyunauths.json'
+})
 Page({
 
   /**
@@ -7,7 +13,8 @@ Page({
    */
   data: {
     opentopics: [],
-    topicid : null
+    topicid : null,
+    title: null
   },
 
   /**
@@ -34,7 +41,8 @@ Page({
         })
         that.setData({
           opentopics: res.data.videos,
-          topicid : topicid
+          topicid : topicid,
+          title: res.data.title
         })
       })
   },
@@ -108,7 +116,7 @@ Page({
             appsecret: app.globalData.appsecret,
             user_id: app.globalData.userid,
             session: app.globalData.usersession,
-            video_title: "myvideo123"
+            video_title: that.data.title
           },
           header: {
             'Content-Type': 'application/json'

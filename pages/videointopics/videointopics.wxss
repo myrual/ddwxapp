@@ -1,6 +1,13 @@
 /* videointopics.wxss */
 .btn-area{
   width: 100%;
+  font-size: 50rpx;
+  height: 100rpx;
+  background-color: deepskyblue;
+  color: white;
+}
+.video-area{
+  width: 100%;
 }
 .video_toolbar{
 }
@@ -10,7 +17,6 @@
   align-items: center;
   justify-content: center;
   margin: 20rpx 20rpx 20rpx 20rpx;
-
 }
 .empty{
   width: 30%;
@@ -40,6 +46,7 @@
   text-align: left;
 }
 .user-avatar{
-  height: 100px;
-  width: 100px;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 10rpx;
 }

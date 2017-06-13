@@ -1,17 +1,21 @@
 <!--videointopics.wxml-->
-<button class="btn-area" id="{{item.id}}" type="primary"  size="mini" bindtap="chooseImage">我来说一段</button>
+<view class="btn-area" id="{{item.id}}" type="primary"  size="mini" bindtap="chooseImage">我来说一段</view>
 <view class="unit" wx:for="{{opentopics}}">
 
 <view wx:if="{{item.videourl != null}}"> 
   <view>
-    <video class="btn-area" src="{{item.videourl}}"></video>
+    <video class="video-area" src="{{item.videourl}}"></video>
    </view>
    <view class="flex-wrp video_toolbar" style="flex-direction:row;">
-          <view class="voter_bar vote_button text-left">
-      <view class="owner">{{item.owner}}</view>
-        <image class="image user-avatar" src="{{item.avatar_url}}"/>
+      <view class="voter_bar vote_button text-left">
+        <view class="owner">
+<image class="user-avatar" src="{{item.avatar_url}}"/>
+{{item.owner}}
+        </view>
+          
       </view>
-          <view class="voter_bar vote_button text-right">
+
+      <view class="voter_bar vote_button text-right">
 
             <button class="like" id="{{item.id}}" type="default"  size="mini"       bindtap="chooseImage">赞</button>
           </view>
