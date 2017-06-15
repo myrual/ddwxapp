@@ -7,7 +7,8 @@
     "pages/uploadsuccess/uploadsuccess",
     "pages/openbattle/openbattle",
     "pages/videointopics/videointopics",
-    "pages/listtopics/listtopics"
+    "pages/listtopics/listtopics",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,12 +23,8 @@
         "text": "斗斗"
       },
       {
-        "pagePath": "pages/listtopics/listtopics",
-        "text": "话题"
-      },
-      {
         "pagePath": "pages/videos/videos",
-        "text": "我的视频"
+        "text": "我的"
       }
     ]
   }
