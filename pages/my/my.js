@@ -1,18 +1,25 @@
 // my.js
+var app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    nickname: null,
+    avatarurl: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
+    that.setData({
+    nickname: app.globalData.userInfo.nickName,
+      avatarurl: app.globalData.userInfo.avatarUrl
+  })
   },
 
   /**
@@ -62,5 +69,10 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  myvideo: function (test) {
+    wx.navigateTo({
+      url: '../videos/videos'
+    })
   }
 })

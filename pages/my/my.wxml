@@ -1,2 +1,28 @@
 <!--my.wxml-->
-<text>my.wxml</text>
+      <view class="flex-wrp">
+        <view  style="justify-content: center">
+            <image class="user-avatar" src="{{avatarurl}}"/>
+        </view>
+        <view >
+          <view class="text-center">  {{nickname}}</view>
+        </view>
+      </view>
+  <view class="index-bd">
+    <view class="kind-list">
+        <view class="kind-list-item">
+          <view id="" class="kind-list-item-hd" bindtap="myvotes">
+            <view class="kind-list-text">我的投票</view>
+          </view>
+        </view>
+        <view class="kind-list-item">
+          <view id="" class="kind-list-item-hd" bindtap="myvideo">
+            <view class="kind-list-text">我的视频</view>
+          </view>
+        </view>
+        <view class="kind-list-item">
+          <view id="" class="kind-list-item-hd" bindtap="mybattle">
+            <view class="kind-list-text">我的PK</view>
+          </view>
+        </view>
+    </view>
+  </view>

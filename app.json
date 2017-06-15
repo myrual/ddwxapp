@@ -23,7 +23,11 @@
         "text": "斗斗"
       },
       {
-        "pagePath": "pages/videos/videos",
+        "pagePath": "pages/listtopics/listtopics",        
+        "text": "话题"
+      },
+      {
+        "pagePath": "pages/my/my",
         "text": "我的"
       }
     ]

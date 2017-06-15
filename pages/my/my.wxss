@@ -1,1 +1,31 @@
 /* my.wxss */
+@import "../../common/index.wxss";
+.owner{
+  width: 100%;
+  justify-content: center;
+
+}
+.user-avatar{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 80rpx;
+  justify-content: center;
+}
+.flex-item-V{
+  margin: 0 auto;
+  width: 100%;
+  justify-content: center;
+}
+
+.flex-wrp{
+  width: 100%;
+  margin-top: 20rpx;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+.text-center{
+  text-align: center;
+}
