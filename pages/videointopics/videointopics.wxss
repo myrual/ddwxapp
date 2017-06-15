@@ -5,6 +5,7 @@
   height: 100rpx;
   background-color: deepskyblue;
   color: white;
+  text-align: center;
 }
 .video-area{
   width: 100%;
@@ -46,7 +47,7 @@
   text-align: left;
 }
 .user-avatar{
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 10rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
 }

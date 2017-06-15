@@ -22,7 +22,6 @@ Page({
       side: 'left'
     })
     that.Follow(test.target.id, 'left', that.data.token)
-    that.GetBattlesById(test.target.id)    
   },
   RightFollow: function(test) {
     var that = this
@@ -30,7 +29,6 @@ Page({
       side: 'right'
     })
     that.Follow(test.target.id, 'right', that.data.token)
-    that.GetBattlesById(test.target.id)
   },
   Follow: function (id, side, token) {
     var that = this
@@ -67,6 +65,7 @@ Page({
             title: "投票成功",
             duration: 2000
           })
+		  that.GetBattles()
         }
       }
     }
