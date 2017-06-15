@@ -1,14 +1,12 @@
-// my.js
+// myvotes.js
 var app = getApp()
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    nickname: null,
-    avatarurl: null
+    myvotes: null
   },
 
   /**
@@ -16,10 +14,23 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    that.setData({
-    nickname: app.globalData.userInfo.nickName,
-      avatarurl: app.globalData.userInfo.avatarUrl
-  })
+    console.log(that.data.token);
+    app.request()
+      .get('https://dd.doudouapp.com/api/v1/myvotes.json')
+      .query({
+        appid: app.globalData.appid,
+        appsecret: app.globalData.appsecret,
+        user_id: app.globalData.userid,
+        session: app.globalData.usersession
+      })
+      .end()
+      .then(function (res) {
+        console.log(res.data[0])
+        console.log(res.data[1])
+        that.setData({
+          myvotes: res.data
+        })
+      })
   },
 
   /**
@@ -69,15 +80,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  myvideo: function (test) {
-    wx.navigateTo({
-      url: '../videos/videos'
-    })
-  },
-  myvotes: function (test) {
-    wx.navigateTo({
-      url: 'myvotes/myvotes'
-    })
-  },
+  }
 })

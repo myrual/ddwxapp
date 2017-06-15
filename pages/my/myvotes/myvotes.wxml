@@ -1,0 +1,6 @@
+<!--myvotes.wxml-->
+<!--videos.wxml-->
+  <view class="unit" wx:for="{{myvotes}}">
+          <text>{{item.title}}</text>
+  </view>
+
