@@ -5,6 +5,15 @@
       <view class="battle_title">
         <text>{{item.title}}</text>
       </view>
+
+
+      </view>
+      <view class="page-section-spacing">
+        <view class="flex-wrp" style="flex-direction:row;">
+            <video class="flex-item demo-text-1" src="{{item.left_video_url}}"></video>
+            <video class="flex-item demo-text-2" src="{{item.right_video_url}}"></video>
+        </view>
+      </view>
         <view class="flex-wrp battle_twosides" style="flex-direction:row;">
         
           <view class="battle-left-owner text-right">
@@ -17,14 +26,6 @@
           <text>{{item.right_username}}</text>
           </view>
         </view>
-
-      </view>
-      <view class="page-section-spacing">
-        <view class="flex-wrp" style="flex-direction:row;">
-            <video class="flex-item demo-text-1" src="{{item.left_video_url}}"></video>
-            <video class="flex-item demo-text-2" src="{{item.right_video_url}}"></video>
-        </view>
-      </view>
       <view  class="page-section-spacing">
         <view wx:if="{{item.already_vote == 'NA'}}" class="flex-wrp" style="flex-direction:row;">
           <view class="voter_bar vote_button text-left">
