@@ -1,13 +1,15 @@
 /* videointopics.wxss */
+@import "../../common/index.wxss";
+
 .evenbtn{
   width: 100%;
-  background-color: #2782D7;
+  background-color: #e6e6ff;
   color:white;
   height: 60px;
 }
 .ovenbtn{
   width: 100%;
-  background-color: red;
+  background-color: #ffe6e6;
   color:white;
   height: 60px;
 }

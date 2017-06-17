@@ -16,13 +16,13 @@
       </view>
         <view class="flex-wrp battle_twosides" style="flex-direction:row;">
         
-          <view class="battle-left-owner text-right">
+          <view class="battle-left-owner text-left">
           <text>{{item.left_username}}</text>
           </view>
           <view class="battle-vs-owner text-center">
-            <text></text>
+            <text>VS</text>
           </view>
-          <view class="battle-right-owner text-left">
+          <view class="battle-right-owner text-right">
           <text>{{item.right_username}}</text>
           </view>
         </view>
@@ -35,8 +35,10 @@
             <button id="{{item.id}}" class="mini-btn" type="default" size="mini" bindtap="RightFollow">顶</button>
           </view>
         </view>
-        <view><progress id="votes" percent="{{item.left_votes/(item.left_votes+item.right_votes)*100}}" activeColor="#2782D7" backgroundColor="red" stroke-width="30" /></view>
+        <view><progress id="votes" percent="{{item.left_votes/(item.left_votes+item.right_votes)*100}}" activeColor="#2782D7" backgroundColor="red" stroke-width="3" /></view>
       </view>
 
+    </view>
+    <view class="saparate-line">
     </view>
 </view>
