@@ -37,12 +37,12 @@
         <view wx:else class="flex-wrp" style="flex-direction:row;">
           <view class="battle-left-owner text-left">
 
-            <text wx:if="{{item.already_vote == 'left'}}">你</text>
-            <text >{{item.left_votes}}人支持</text>
+            <text wx:if="{{item.already_vote == 'left'}}">{{item.left_votes-1}}人和你一起顶</text>
+            <text wx:else>{{item.left_votes}}人顶</text>
           </view>
           <view class="battle-right-owner text-right">
-            <text wx:if="{{item.already_vote == 'right'}}">你</text>
-            <text >{{item.right_votes}}人支持</text>
+            <text wx:if="{{item.already_vote == 'right'}}">{{item.right_votes-1}}人和你一起顶</text>
+            <text wx:else>{{item.right_votes}}人顶</text>
           </view>
         </view>
       </view>
