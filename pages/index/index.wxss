@@ -19,8 +19,13 @@
   width: 100%;
   font-size: 40rpx;
 }
+.battle-vs-remain{
+  width: 100%;
+  font-size: 25rpx;
+}
+
 .flex-item{
-  width: 50%;
+  width: 48%;
   height: 300rpx;
   font-size: 26rpx;
 }
@@ -75,4 +80,40 @@
   background: #b3cccc;
   height: 10rpx;
   width: 100%;
+}
+.saparate-line-video{
+  height: 300rpx;
+  width: 0.5%;  
+}
+.leftblue{
+  background: #2782D7;
+  height: 300rpx;
+  width: 0.5%;
+}
+.rightred{
+  background: red;
+  height: 300rpx;
+  width: 0.5%;
+}
+.votes_left_right{
+  width: 100%;
+  height: 40rpx;
+}
+
+.progress{
+  width: 50%;
+}
+.progress-box{
+  width: 50%;
+  display: flex;
+  height: 50rpx;
+  margin-bottom: 30rpx;
+}
+.progress-cancel{
+  margin-left: 40rpx;
+}
+
+.battle-title-part{
+  width: 100%;
+  height: 200rpx;
 }
