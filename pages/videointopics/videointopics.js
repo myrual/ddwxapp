@@ -108,6 +108,9 @@ Page({
         that.setData({
           src: res.tempFilePath
         })
+        wx.showLoading({
+          title: '正在上传',
+        })
         wx.request({
           url: 'https://dd.doudouapp.com/api/v1/videos.json',
           method: 'POST',
@@ -170,6 +173,7 @@ Page({
             'Content-Type': 'application/json'
           },
           success: function (res) {
+            wx.hideLoading()
             console.log(res)
             console.log("Upload video to doudou")
             wx.navigateTo({
