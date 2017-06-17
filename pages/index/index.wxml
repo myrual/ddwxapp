@@ -11,7 +11,7 @@
           <text>{{item.left_username}}</text>
           </view>
           <view class="battle-vs-remain text-center">
-            <text>即将结束</text>
+            <text>剩1小时</text>
           </view>
           <view class="battle-right-owner text-right">
           <text>{{item.right_username}}</text>
@@ -25,14 +25,6 @@
         <view class="battle-right-owner text-right"><progress id="votes" percent="40"  stroke-width="3" activeColor="#cce6ff" backgroundColor="red"/></view>
         </view>
       </view>
-      <view class="page-section-spacing">
-        <view class="flex-wrp" style="flex-direction:row;">
-            <video class="flex-item demo-text-1" src="{{item.left_video_url}}"></video>
-              <view class="saparate-line-video"></view>
-            <video class="flex-item demo-text-2" src="{{item.right_video_url}}"></video>
-        </view>
-      </view>
-
       <view  class="votes_left_right">
         <view wx:if="{{item.already_vote == 'NA'}}" class="flex-wrp" style="flex-direction:row;">
           <view class="voter_bar vote_button text-left">
@@ -43,17 +35,26 @@
           </view>
         </view>
         <view wx:else class="flex-wrp" style="flex-direction:row;">
-          <view class="voter_bar vote_button text-left">
+          <view class="battle-left-owner text-left">
 
-            <text>{{item.left_votes}}人支持</text>
-            <text wx:if="{{item.already_vote == 'left'}}">，包括你</text>
+            <text wx:if="{{item.already_vote == 'left'}}">你</text>
+            <text >{{item.left_votes}}人支持</text>
           </view>
-          <view class="voter_bar vote_button text-right">
-            <text>{{item.right_votes}}人支持</text>
-            <text wx:if="{{item.already_vote == 'right'}}">，包括你</text>
+          <view class="battle-right-owner text-right">
+            <text wx:if="{{item.already_vote == 'right'}}">你</text>
+            <text >{{item.right_votes}}人支持</text>
           </view>
         </view>
       </view>
+      <view class="page-section-spacing">
+        <view class="flex-wrp" style="flex-direction:row;">
+            <video class="flex-item demo-text-1" src="{{item.left_video_url}}"></video>
+              <view class="saparate-line-video"></view>
+            <video class="flex-item demo-text-2" src="{{item.right_video_url}}"></video>
+        </view>
+      </view>
+
+
     </view>
     <view class="saparate-line">
     </view>
