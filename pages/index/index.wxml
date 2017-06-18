@@ -11,18 +11,11 @@
           <text>{{item.left_username}}</text>
           </view>
           <view class="battle-vs-remain text-center">
-            <text>剩1小时</text>
+            <text></text>
           </view>
           <view class="battle-right-owner text-right">
           <text>{{item.right_username}}</text>
           </view>
-        </view>
-        <view class="flex-wrp battle_twosides" style="flex-direction:row;">
-
-        <view class="battle-left-owner text-left"><progress id="votes" percent="70" activeColor="red" backgroundColor="#cce6ff"  stroke-width="3" /></view>
-          <view class="battle-vs-owner text-center">
-          </view>
-        <view class="battle-right-owner text-right"><progress id="votes" percent="40"  stroke-width="3" activeColor="#cce6ff" backgroundColor="red"/></view>
         </view>
       </view>
       <view  class="votes_left_right">
