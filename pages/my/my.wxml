@@ -19,10 +19,5 @@
             <view class="kind-list-text">我的视频</view>
           </view>
         </view>
-        <view class="kind-list-item">
-          <view id="" class="kind-list-item-hd" bindtap="mybattle">
-            <view class="kind-list-text">我的PK</view>
-          </view>
-        </view>
     </view>
   </view>

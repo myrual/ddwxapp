@@ -11,7 +11,8 @@
           <text>{{item.left_username}}</text>
           </view>
           <view class="battle-vs-remain text-center">
-            <text></text>
+<!--<text>运行{{item.elapsedhours}}小时</text>-->
+            
           </view>
           <view class="battle-right-owner text-right">
           <text>{{item.right_username}}</text>

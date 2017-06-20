@@ -1,1 +1,2 @@
 /* myvotes.wxss */
+@import "../../../common/index.wxss";
