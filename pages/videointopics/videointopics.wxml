@@ -14,6 +14,11 @@
         </view>
           
       </view>
+
+      <view class="voter_bar vote_button text-right">
+
+            <button class="like" id="{{item.id}}" type="default"  size="mini"       bindtap="chooseImage">怼TA</button>
+          </view>
   </view>
 </view>
 </view>
