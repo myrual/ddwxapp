@@ -77,8 +77,8 @@
 }
 
 .saparate-line{
-  background: #b3cccc;
-  height: 10rpx;
+  background: #e0ebeb;
+  height: 20rpx;
   width: 100%;
 }
 .saparate-line-video{
