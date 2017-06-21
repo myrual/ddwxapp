@@ -117,3 +117,7 @@
   width: 100%;
   height: 200rpx;
 }
+
+.page-section-spacing{
+  padding-top: 5%
+}
