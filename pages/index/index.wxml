@@ -8,14 +8,11 @@
         <view class="flex-wrp battle_twosides" style="flex-direction:row;">
         
           <view class="battle-left-owner text-left">
-          <text>{{item.left_username}}</text>
+          <text>{{item.left_username}} vs {{item.right_username}}</text>
           </view>
           <view class="battle-vs-remain text-center">
 <!--<text>运行{{item.elapsedhours}}小时</text>-->
             
-          </view>
-          <view class="battle-right-owner text-right">
-          <text>{{item.right_username}}</text>
           </view>
         </view>
       </view>
@@ -29,14 +26,14 @@
           </view>
         </view>
         <view wx:else class="flex-wrp" style="flex-direction:row;">
-          <view class="battle-left-owner text-left">
+          <view class="battle-left-voters text-left">
 
-            <text wx:if="{{item.already_vote == 'left' && item.left_votes > 1}}">{{item.left_votes-1}}人和你一起顶</text>
+            <text wx:if="{{item.already_vote == 'left' && item.left_votes > 1}}">你和{{item.left_votes-1}}人顶</text>
             <text wx:elif="{{item.already_vote == 'left' && item.left_votes == 1}}">你第一个支持</text>
             <text wx:else>{{item.left_votes}}人顶</text>
           </view>
-          <view class="battle-right-owner text-right">
-            <text wx:if="{{item.already_vote == 'right' && item.right_votes > 1}}">{{item.right_votes-1}}人和你一起顶</text>
+          <view class="battle-right-voters text-right">
+            <text wx:if="{{item.already_vote == 'right' && item.right_votes > 1}}">你和{{item.right_votes-1}}人顶</text>
             <text wx:elif="{{item.already_vote == 'right' && item.right_votes == 1}}">你第一个支持</text>
             <text wx:else>{{item.right_votes}}人顶</text>
           </view>
