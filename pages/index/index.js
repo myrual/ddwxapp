@@ -65,7 +65,8 @@ Page({
             title: "投票成功",
             duration: 2000
           })
-		  that.GetBattles()
+		      that.GetBattles()
+          that.GetBattlesById(id)
         }
       }
     }
@@ -92,7 +93,7 @@ Page({
           duirightid: res.data.right_video_id,
         })
         wx.navigateTo({
-          url: '../challenge/challenge?side=left&id=' + res.data.id + '&side=' + that.data.side + '&duileftid=' + that.data.duileftid + '&duirightid=' + that.data.duirightid + '&userid=' + that.data.userid +'&token='+that.data.token
+          url: '../challenge/challenge?id=' + res.data.id
         })
       })
   },

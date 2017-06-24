@@ -46,8 +46,10 @@ Page({
     app.request()
       .get('https://dd.doudouapp.com/api/v1/battles/' + id + '.json')
       .query({
-        appid: 'wxapp',
-        appsecret: 'wxapp1234!@'
+        appid: app.globalData.appid,
+        appsecret: app.globalData.appsecret,
+        user_id: app.globalData.userid,
+        session: app.globalData.usersession
       })
       .end()
       .then(function (res) {
@@ -60,7 +62,7 @@ Page({
         })
       })
   },
-  onLoad: function () {
+  onLoad: function (options) {
     console.log('onLoad')
     var that = this
     this.setData({
