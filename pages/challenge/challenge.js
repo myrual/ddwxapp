@@ -63,7 +63,7 @@ Page({
       })
   },
   onLoad: function (options) {
-    console.log('onLoad')
+    console.log(options)
     var that = this
     this.setData({
       side: that.options.side,

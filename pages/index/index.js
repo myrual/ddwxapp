@@ -73,6 +73,13 @@ Page({
     )
   },
 
+  GoBattlePage: function(event){
+    var battleid = event.target.id
+    wx.navigateTo({
+      url: '../challenge/challenge?id=' + battleid
+    })
+  },
+
   GetBattlesById: function (id) {
     var that = this
     console.log(that.data.token);
