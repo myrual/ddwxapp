@@ -17,6 +17,10 @@ Page({
     userid: null,
     videoid: null,
     title: null,
+    leftusername: null,
+    leftuseravatar: null,
+    rightusername: null,
+    rightuseravatar: null,
   },
 
   DuiFunction: function(test) {
@@ -59,6 +63,10 @@ Page({
           duileftid: res.data.left_video_id,
           duirightid: res.data.right_video_id,
           title: res.data.title,
+          leftusername: res.data.leftusername,
+          rightusername: res.data.rightusername,
+          leftuseravatar: res.data.leftuseravatar,
+          rightuseravatar: res.data.rightuseravatar,
         })
       })
   },

@@ -2,8 +2,8 @@
 
     <view class="battle-left-vs-right">
       <view class="battle-title-part">
-      <view id="{{item.id}}" class="battle_title" bindtap="GoBattlePage">
-        <text>{{item.title}}</text>
+      <view  class="battle_title">
+        <text id="{{item.id}}"  bindtap="GoBattlePage">{{item.title}}</text>
       </view>
         <view class="flex-wrp battle_twosides" style="flex-direction:row;">
         
