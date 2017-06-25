@@ -15,6 +15,20 @@
     {{battle.rightusername}}
   </view>
 </view>
+<view class="flex-wrp" style="flex-direction:row;">
+  <view class="battle-left-voters text-left">
+    <view class="unit" wx:for="{{leftvoters}}">
+      <image class="user-avatar" src="{{item.avatar}}"/>    
+      {{item.name}}
+    </view>
+  </view>
+  <view class="battle-right-voters text-right">
+    <view class="unit" wx:for="{{rightvoters}}">
+      {{item.name}}
+      <image class="user-avatar" src="{{item.avatar}}"/>
+    </view>
+  </view>
+</view>
 <view wx:if="{{battle.id == targetid && side == 'left'}}">
   <button id="{{duirightid}}" type="default" bindtap="DuiFunction">挑战右边</button>
 </view>

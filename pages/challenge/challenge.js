@@ -21,6 +21,8 @@ Page({
     leftuseravatar: null,
     rightusername: null,
     rightuseravatar: null,
+    rightvoters:null,
+    leftvoters:null,
   },
 
   DuiFunction: function(test) {
@@ -67,6 +69,8 @@ Page({
           rightusername: res.data.rightusername,
           leftuseravatar: res.data.leftuseravatar,
           rightuseravatar: res.data.rightuseravatar,
+          leftvoters: res.data.leftVoters,
+          rightvoters: res.data.rightVoters,
         })
       })
   },
