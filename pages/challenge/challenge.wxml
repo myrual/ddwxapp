@@ -16,15 +16,13 @@
   </view>
 </view>
 <view class="flex-wrp" style="flex-direction:row;">
-  <view class="battle-left-voters text-left">
-    <view class="unit" wx:for="{{leftvoters}}">
+  <view class="battle-left-voters flex-wrp" style="flex-direction:row;">
+    <view class="supporter" wx:for="{{leftvoters}}">
       <image class="user-avatar" src="{{item.avatar}}"/>    
-      {{item.name}}
     </view>
   </view>
-  <view class="battle-right-voters text-right">
-    <view class="unit" wx:for="{{rightvoters}}">
-      {{item.name}}
+  <view class="battle-right-voters flex-wrp" style="flex-direction:row;">
+    <view class="supporter" wx:for="{{rightvoters}}">
       <image class="user-avatar" src="{{item.avatar}}"/>
     </view>
   </view>

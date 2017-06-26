@@ -70,3 +70,6 @@
   margin-right: 20rpx;
   color: #999999;
 }
+.supporter{
+  width: 60rpx;
+}
