@@ -60,16 +60,47 @@
 .owner-bar{
   width: 100%;
 }
+.left-half{
+  width: 50%;
+  margin-left: 20rpx;
+  color: #999999;
+  align-items: left;
+}
+.right-half{
+  width: 50%;
+  margin-right: 20rpx;
+  color: #999999;
+  align-items: right;
+}
 .battle-left-voters{
-  width: 100%;
+  width: 33%;
   margin-left: 20rpx;
   color: #999999;
 }
 .battle-right-voters{
-  width: 100%;
+  width: 33%;
   margin-right: 20rpx;
   color: #999999;
 }
+.battle-center-vs{
+  width: 33%;
+  text-align: center;
+  font-size: 45rpx;
+}
 .supporter{
   width: 60rpx;
+}
+
+.vs{
+  font-size: 30rpx;
+}
+
+.flex-item{
+  width: 49.75%;
+  height: 300rpx;
+  font-size: 26rpx;
+}
+.saparate-line-video{
+  height: 300rpx;
+  width: 0.5%;  
 }

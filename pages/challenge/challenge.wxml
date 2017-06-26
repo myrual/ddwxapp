@@ -1,27 +1,30 @@
 <view class="flex-wrp">
   <view class="battle-title">{{battle.title}}</view>
 </view>
-<view class="flex-wrp" style="flex-direction:row;">
-  <video id="leftvideo" src="{{battle.left_video_url}}"></video>
-  <video id="rightvideo" src="{{battle.right_video_url}}"></video>
-</view>
+        <view class="flex-wrp" style="flex-direction:row;">
+            <video class="flex-item demo-text-1" src="{{battle.left_video_url}}"></video>
+              <view class="saparate-line-video"></view>
+            <video class="flex-item demo-text-2" src="{{battle.right_video_url}}"></video>
+        </view>
 <view class="flex-wrp" style="flex-direction:row;">
   <view class="battle-left-voters text-left">
     {{battle.leftusername}}
     <image class="user-avatar" src="{{battle.leftuseravatar}}"/>
   </view>
+  <text class="battle-center-vs">vs</text>
   <view class="battle-right-voters text-right">
     <image class="user-avatar" src="{{battle.rightuseravatar}}"/>
     {{battle.rightusername}}
   </view>
 </view>
+<view>围观群众</view>
 <view class="flex-wrp" style="flex-direction:row;">
-  <view class="battle-left-voters flex-wrp" style="flex-direction:row;">
+  <view class="left-half flex-wrp" style="flex-direction:row;">
     <view class="supporter" wx:for="{{leftvoters}}">
       <image class="user-avatar" src="{{item.avatar}}"/>    
     </view>
   </view>
-  <view class="battle-right-voters flex-wrp" style="flex-direction:row;">
+  <view class="right-half flex-wrp" style="flex-direction:row;">
     <view class="supporter" wx:for="{{rightvoters}}">
       <image class="user-avatar" src="{{item.avatar}}"/>
     </view>
