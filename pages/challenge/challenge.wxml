@@ -24,7 +24,7 @@
       <image class="user-avatar" src="{{item.avatar}}"/>    
     </view>
   </view>
-  <view class="right-half flex-wrp" style="flex-direction:row;">
+  <view class="right-half flex-wrp" style="flex-direction:row-reverse;">
     <view class="supporter" wx:for="{{rightvoters}}">
       <image class="user-avatar" src="{{item.avatar}}"/>
     </view>
